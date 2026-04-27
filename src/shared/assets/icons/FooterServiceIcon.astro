@@ -1,0 +1,23 @@
+---
+import WebIcon from './WebIcon.astro';
+import MobileIcon from './MobileIcon.astro';
+import DesktopIcon from './DesktopIcon.astro';
+import MailIcon from './MailIcon.astro';
+import FaqIcon from './FaqIcon.astro';
+import ShieldIcon from './ShieldIcon.astro';
+import DocumentIcon from './DocumentIcon.astro';
+
+interface Props {
+  name: 'web' | 'mobile' | 'desktop' | 'mail' | 'faq' | 'shield' | 'document';
+  class?: string;
+}
+const { name, class: className = 'h-4 w-4' } = Astro.props;
+---
+
+{name === 'web' && <WebIcon class={className} />}
+{name === 'mobile' && <MobileIcon class={className} />}
+{name === 'desktop' && <DesktopIcon class={className} />}
+{name === 'mail' && <MailIcon class={className} />}
+{name === 'faq' && <FaqIcon class={className} />}
+{name === 'shield' && <ShieldIcon class={className} />}
+{name === 'document' && <DocumentIcon class={className} />}

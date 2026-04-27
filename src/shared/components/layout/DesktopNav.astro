@@ -1,0 +1,14 @@
+---
+import NavLink from '../ui/NavLink.astro';
+import { NAV_ITEMS, NAV_LABELS } from '../../constants/navigation';
+---
+
+<nav class="hidden md:flex space-x-6" aria-label={NAV_LABELS.MAIN_NAV_ARIA}>
+  {
+    NAV_ITEMS.map((item) => (
+      <NavLink href={item.href} class="text-white hover:text-blue-500">
+        {item.label}
+      </NavLink>
+    ))
+  }
+</nav>

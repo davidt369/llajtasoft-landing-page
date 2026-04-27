@@ -1,0 +1,28 @@
+---
+import { BENEFITS } from '../constants/labels';
+---
+
+<section class="text-center bg-radial-[at_50%_75%] from-blue-950 via-gray-900 to-gray-900 to-90% p-24 px-2 md:px-16">
+  <h2 class="text-3xl font-semibold mb-4 text-white">
+    {BENEFITS.TITLE}
+  </h2>
+  <p class="text-center text-gray-400 pb-4">
+    {BENEFITS.SUBTITLE}
+  </p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-8">
+    {
+      BENEFITS.ITEMS.map((item) => (
+        <article class="flex flex-col items-center">
+          <img
+            src={item.icon}
+            alt={item.alt}
+            class="w-16 h-16 object-cover mb-4"
+            loading="lazy"
+          />
+          <h3 class="text-xl font-semibold text-white">{item.title}</h3>
+          <p class="text-gray-400">{item.description}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>

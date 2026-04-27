@@ -1,0 +1,40 @@
+---
+import LocationIcon from '../../assets/icons/LocationIcon.astro';
+import PhoneIcon from '../../assets/icons/PhoneIcon.astro';
+import MailIcon from '../../assets/icons/MailIcon.astro';
+import { FOOTER_LABELS } from '../../constants/footer';
+---
+
+<div class="p-6">
+  <div class="flex items-center gap-3 mb-5">
+    <h5 class="font-semibold text-xl text-white">{FOOTER_LABELS.CONTACT_TITLE}</h5>
+  </div>
+  <ul class="space-y-4">
+    <li class="flex items-start gap-3">
+      <LocationIcon class="h-5 w-5 mt-0.5 text-blue-500 flex-shrink-0" />
+      <div>
+        <span class="block text-white font-medium mb-1">{FOOTER_LABELS.ADDRESS_LABEL}</span>
+        <span class="text-gray-400">{FOOTER_LABELS.ADDRESS_VALUE}</span>
+      </div>
+    </li>
+    <li class="flex items-start gap-3">
+      <PhoneIcon class="h-5 w-5 mt-0.5 text-blue-500 flex-shrink-0" />
+      <div>
+        <span class="block text-white font-medium mb-1">{FOOTER_LABELS.PHONE_LABEL}</span>
+        <span class="text-gray-400">{FOOTER_LABELS.PHONE_VALUE}</span>
+      </div>
+    </li>
+    <li class="flex items-start gap-3">
+      <MailIcon class="h-5 w-5 mt-0.5 text-blue-500 flex-shrink-0" />
+      <div>
+        <span class="block text-white font-medium mb-1">{FOOTER_LABELS.EMAIL_LABEL}</span>
+        <a
+          href={`mailto:${FOOTER_LABELS.EMAIL_VALUE}`}
+          class="text-blue-400 hover:text-blue-300 transition-colors duration-300"
+        >
+          {FOOTER_LABELS.EMAIL_VALUE}
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>

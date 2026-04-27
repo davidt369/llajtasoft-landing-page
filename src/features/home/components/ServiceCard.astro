@@ -1,0 +1,95 @@
+---
+import CheckCircleIcon from '../../../shared/assets/icons/CheckCircleIcon.astro';
+import WebIcon from '../../../shared/assets/icons/WebIcon.astro';
+import DesktopIcon from '../../../shared/assets/icons/DesktopIcon.astro';
+import MobileIcon from '../../../shared/assets/icons/MobileIcon.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  features: readonly string[];
+  technologies: string;
+  image: string;
+  iconType: 'web' | 'desktop' | 'mobile';
+  accentColor: string;
+  imageOrder: 'left' | 'right';
+}
+
+const { title, description, features, technologies, image, iconType, accentColor, imageOrder } = Astro.props;
+
+const borderHoverColor = {
+  blue: 'hover:border-blue-500/30',
+  purple: 'hover:border-purple-500/30',
+  teal: 'hover:border-teal-500/30',
+}[accentColor] ?? 'hover:border-blue-500/30';
+
+const iconBgColor = {
+  blue: 'bg-blue-500/20 text-white',
+  purple: 'bg-purple-500/20 text-purple-400',
+  teal: 'bg-teal-500/20 text-teal-400',
+}[accentColor] ?? 'bg-blue-500/20 text-white';
+
+const hoverTextColor = {
+  blue: 'group-hover:text-white',
+  purple: 'group-hover:text-purple-400',
+  teal: 'group-hover:text-teal-400',
+}[accentColor] ?? 'group-hover:text-white';
+
+const checkColor = {
+  blue: 'text-white',
+  purple: 'text-purple-400',
+  teal: 'text-teal-400',
+}[accentColor] ?? 'text-white';
+
+const techColor = {
+  blue: 'text-white',
+  purple: 'text-purple-400',
+  teal: 'text-teal-400',
+}[accentColor] ?? 'text-white';
+---
+
+<article class={`group bg-gray-900/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-gray-800 border border-gray-800 ${borderHoverColor}`}>
+  <div class="grid md:grid-cols-2 gap-8">
+    {imageOrder === 'left' && (
+      <div class="relative h-64 md:h-auto overflow-hidden">
+        <img src={image} alt={title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-70"></div>
+      </div>
+    )}
+
+    <div class:list={['p-8 flex flex-col justify-center', { 'md:order-first': imageOrder === 'right' }]}>
+      <div class="flex items-center mb-4">
+        <div class={`w-12 h-12 flex items-center justify-center rounded-xl ${iconBgColor} mr-4`}>
+          {iconType === 'web' && <WebIcon class="h-6 w-6" />}
+          {iconType === 'desktop' && <DesktopIcon class="h-6 w-6" />}
+          {iconType === 'mobile' && <MobileIcon class="h-6 w-6" />}
+        </div>
+        <h3 class={`text-2xl font-bold text-white ${hoverTextColor} transition-colors duration-300`}>{title}</h3>
+      </div>
+
+      <p class="text-gray-400 mb-6 leading-relaxed">{description}</p>
+
+      <ul class="text-gray-300 space-y-2 mb-6">
+        {features.map((feature) => (
+          <li class="flex items-center">
+            <CheckCircleIcon class={`h-5 w-5 ${checkColor} mr-2`} />
+            {feature}
+          </li>
+        ))}
+      </ul>
+
+      <div class="p-4 bg-gray-800/50 rounded-xl">
+        <p class="text-gray-400 text-sm">
+          Tecnologías utilizadas: <span class={`${techColor} font-medium`}>{technologies}</span>
+        </p>
+      </div>
+    </div>
+
+    {imageOrder === 'right' && (
+      <div class="relative h-64 md:h-auto overflow-hidden">
+        <img src={image} alt={title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-70"></div>
+      </div>
+    )}
+  </div>
+</article>

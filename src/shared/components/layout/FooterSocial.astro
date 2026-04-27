@@ -1,0 +1,25 @@
+---
+import FooterSocialIcon from '../../assets/icons/FooterSocialIcon.astro';
+import { FOOTER_LABELS, FOOTER_SOCIAL } from '../../constants/footer';
+---
+
+<div class="p-6">
+  <div class="flex items-center gap-3 mb-5">
+    <h5 class="font-semibold text-xl text-white">{FOOTER_LABELS.SOCIAL_TITLE}</h5>
+  </div>
+  <div class="space-y-5">
+    {
+      FOOTER_SOCIAL.map((link) => (
+        <a
+          href={link.href}
+          class="flex items-center gap-3 text-gray-400 hover:text-blue-400 transition-colors duration-300 group"
+        >
+          <div class="w-10 h-10 rounded-full bg-blue-900/20 flex items-center justify-center text-blue-400 group-hover:bg-blue-900/40 transition-colors duration-300">
+            <FooterSocialIcon name={link.icon} />
+          </div>
+          <span>{link.label}</span>
+        </a>
+      ))
+    }
+  </div>
+</div>

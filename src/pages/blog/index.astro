@@ -1,8 +1,8 @@
 ---
-import BaseHead from "../../components/BaseHead.astro";
-import Header from "../../components/Header.astro";
-import Footer from "../../components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import BaseHead from "../../shared/components/layout/BaseHead.astro";
+import Header from "../../shared/components/layout/Header.astro";
+import Footer from "../../shared/components/layout/Footer.astro";
+import { SITE } from "../../shared/constants/site";
 import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 
@@ -18,7 +18,7 @@ const regularPosts = posts.slice(2);
 
 <html lang="es">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title={SITE.TITLE} description={SITE.DESCRIPTION} />
   </head>
   <body class="bg-gray-900 ">
     <Header />

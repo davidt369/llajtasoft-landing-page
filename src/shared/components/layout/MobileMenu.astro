@@ -1,0 +1,44 @@
+---
+import NavLink from '../ui/NavLink.astro';
+import MenuIcon from '../../assets/icons/MenuIcon.astro';
+import { NAV_ITEMS, NAV_LABELS } from '../../constants/navigation';
+---
+
+<div class="md:hidden">
+  <button
+    class="text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+    id="menu-toggle"
+    aria-label={NAV_LABELS.OPEN_MENU_ARIA}
+    aria-expanded="false"
+  >
+    <MenuIcon />
+  </button>
+</div>
+
+<nav
+  id="mobile-menu"
+  class="hidden md:hidden mt-4"
+  role="navigation"
+  aria-label={NAV_LABELS.MOBILE_NAV_ARIA}
+>
+  {
+    NAV_ITEMS.map((item) => (
+      <NavLink href={item.href} class="block text-white py-2 hover:text-blue-500">
+        {item.label}
+      </NavLink>
+    ))
+  }
+</nav>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      const isExpanded = !mobileMenu.classList.contains('hidden');
+      menuToggle.setAttribute('aria-expanded', String(isExpanded));
+    });
+  }
+</script>

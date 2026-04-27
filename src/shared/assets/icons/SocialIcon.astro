@@ -1,0 +1,16 @@
+---
+import MastodonIcon from './MastodonIcon.astro';
+import TwitterIcon from './TwitterIcon.astro';
+import GithubIcon from './GithubIcon.astro';
+
+interface Props {
+  name: 'mastodon' | 'twitter' | 'github';
+  class?: string;
+}
+
+const { name, class: className = 'w-6 h-6' } = Astro.props;
+---
+
+{name === 'mastodon' && <MastodonIcon class={className} />}
+{name === 'twitter' && <TwitterIcon class={className} />}
+{name === 'github' && <GithubIcon class={className} />}

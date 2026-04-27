@@ -1,0 +1,25 @@
+---
+import LogoIcon from '../../assets/icons/LogoIcon.astro';
+import DesktopNav from './DesktopNav.astro';
+import SocialLinks from './SocialLinks.astro';
+import MobileMenu from './MobileMenu.astro';
+import { SITE } from '../../constants/site';
+import { NAV_LABELS } from '../../constants/navigation';
+---
+
+<header class="h-24 flex items-center justify-between px-2 md:px-16">
+  <h2 class="text-white text-2xl font-semibold">
+    <a
+      href="/"
+      class="text-white flex items-center gap-1"
+      aria-label={NAV_LABELS.HOME_LINK_ARIA}
+    >
+      <LogoIcon />
+      <span>{SITE.TITLE}</span>
+    </a>
+  </h2>
+
+  <DesktopNav />
+  <SocialLinks />
+  <MobileMenu />
+</header>

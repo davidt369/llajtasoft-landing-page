@@ -1,0 +1,21 @@
+---
+import SocialIcon from '../../assets/icons/SocialIcon.astro';
+import { SOCIAL_LINKS } from '../../constants/social';
+---
+
+<div class="flex space-x-4">
+  {
+    SOCIAL_LINKS.map((link) => (
+      <a
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-white hover:text-indigo-300 transition-colors"
+        aria-label={link.label}
+      >
+        <span class="sr-only">{link.label}</span>
+        <SocialIcon name={link.key} class="w-6 h-6" />
+      </a>
+    ))
+  }
+</div>
