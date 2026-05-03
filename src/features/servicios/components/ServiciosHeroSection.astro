@@ -1,0 +1,24 @@
+---
+import { SERVICIOS_HERO } from '../constants/labels';
+---
+
+<section id="servicios" class="section-hero">
+  <div class="section-pattern"><div class="section-pattern-grid"></div></div>
+
+  <div class="section-container">
+    <div class="section-header">
+      <span class="eyebrow">{SERVICIOS_HERO.BADGE}</span>
+      <h2 class="section-title">{SERVICIOS_HERO.TITLE}</h2>
+      <div class="accent-divider"></div>
+      <p class="section-copy">
+        {SERVICIOS_HERO.SUBTITLE}
+      </p>
+    </div>
+
+    <div class="text-center">
+      <a href={SERVICIOS_HERO.CTA_HREF} class="btn-primary">
+        {SERVICIOS_HERO.CTA_TEXT}
+      </a>
+    </div>
+  </div>
+</section>

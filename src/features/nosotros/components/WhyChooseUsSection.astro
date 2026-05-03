@@ -1,0 +1,53 @@
+---
+import { WHY_CHOOSE_US } from '../constants/labels';
+
+const iconMap: Record<string, string> = {
+  blue: 'M16 18 22 12 16 6M8 6 2 12 8 18',
+  purple: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2',
+  teal: 'M12 12m-10 0a10 10 0 1 0 20 0 10 10 0 1 0-20 0M12 6v6l4 2',
+};
+---
+
+<section class="py-20 px-4 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-800 relative overflow-hidden">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0 bg-[radial-gradient(#ffffff33_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+  </div>
+  
+  <div class="max-w-6xl mx-auto">
+    <!-- Section header -->
+    <div class="text-center mb-16 relative">
+      <span class="inline-block px-3 py-1 text-xs font-medium tracking-wider text-white uppercase bg-blue-400/10 rounded-full mb-4">{WHY_CHOOSE_US.BADGE}</span>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">{WHY_CHOOSE_US.TITLE}</h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+      <p class="text-gray-300 max-w-2xl mx-auto text-lg">
+        {WHY_CHOOSE_US.SUBTITLE}
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+      {WHY_CHOOSE_US.ITEMS.map((item) => (
+        <div class={`group bg-gray-900/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-${item.accentColor}-500/20 border border-gray-800 hover:border-${item.accentColor}-500/30 p-8`}>
+          <div class={`w-12 h-12 flex items-center justify-center rounded-xl bg-${item.accentColor}-500/20 text-${item.accentColor}-400 mb-6`}>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconMap[item.accentColor]} />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-4">{item.title}</h3>
+          <p class="text-gray-300">
+            {item.description}
+          </p>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center">
+      <a
+        href={WHY_CHOOSE_US.CTA_HREF}
+        class="inline-flex h-12 items-center justify-center rounded-full bg-blue-600 px-8 text-base font-medium text-white shadow-lg transition-colors hover:bg-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+      >
+        {WHY_CHOOSE_US.CTA_TEXT}
+      </a>
+    </div>
+  </div>
+</section>

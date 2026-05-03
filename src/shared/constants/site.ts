@@ -1,8 +1,10 @@
 export const SITE = {
-  TITLE: 'Llajtasoft - Desarrollo de Software a Medida',
+  TITLE: 'LlajtaSoft',
+  COMPANY_NAME: 'Llajtasoft',
   DESCRIPTION:
-    'Transformamos tu negocio con soluciones de software personalizadas. Desarrollo web, móvil y de escritorio para empresas que buscan innovación y crecimiento tecnológico.',
-  URL: 'https://llajtasoft.com',
+    'Diseñamos software web, móvil y de escritorio que se adapta a los procesos que ya tienes. Sin migrar todo desde cero: conectamos, automatizamos y escalamos lo que funciona.',
+  URL: 'https://llajtasoft.pages.dev',
+  DEFAULT_OG_IMAGE: '/blog-placeholder-1.jpg',
   KEYWORDS:
-    'desarrollo de software, desarrollo web, desarrollo móvil, desarrollo de escritorio, Llajtasoft, tecnología, soluciones digitales',
+    'software a medida, desarrollo web personalizado, aplicaciones móviles empresariales, sistemas ERP, integración de software, automatización de procesos, desarrollo Flutter, desarrollo React, Llajtasoft Bolivia',
 } as const;

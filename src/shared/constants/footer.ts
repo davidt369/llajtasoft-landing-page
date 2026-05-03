@@ -1,6 +1,6 @@
 export const FOOTER_LABELS = {
   BRAND_DESCRIPTION:
-    'Transformamos tus ideas en soluciones tecnológicas de alto impacto. Con más de 5 años de experiencia, creamos aplicaciones web, móviles y de escritorio personalizadas para tu negocio.',
+    'Automatizamos procesos manuales e integramos sistemas existentes para que PYMEs operen con menos errores, menos trabajo repetitivo y más control.',
   SERVICES_TITLE: 'Servicios',
   INFO_TITLE: 'Información',
   SOCIAL_TITLE: 'Síguenos',
@@ -11,9 +11,9 @@ export const FOOTER_LABELS = {
   SITEMAP: 'Mapa del Sitio',
   COPYRIGHT_SUFFIX: 'Todos los derechos reservados.',
   ADDRESS_LABEL: 'Dirección:',
-  ADDRESS_VALUE: 'Calle Ficticia 123, Ciudad, País',
+  ADDRESS_VALUE: 'Bolivia',
   PHONE_LABEL: 'Teléfono:',
-  PHONE_VALUE: '+1 234 567 890',
+  PHONE_VALUE: '+591 70000000',
   EMAIL_LABEL: 'Email:',
   EMAIL_VALUE: 'contacto@llajtasoft.com',
 } as const;
@@ -25,14 +25,14 @@ export type FooterLink = {
 };
 
 export const FOOTER_SERVICES: readonly FooterLink[] = [
-  { href: '#servicios', label: 'Desarrollo Web', icon: 'web' },
-  { href: '#servicios', label: 'Desarrollo Móvil', icon: 'mobile' },
-  { href: '#servicios', label: 'Desarrollo de Escritorio', icon: 'desktop' },
+  { href: '/servicios', label: 'Automatización de procesos', icon: 'web' },
+  { href: '/servicios', label: 'Integración de sistemas', icon: 'desktop' },
+  { href: '/servicios', label: 'Sistemas a medida', icon: 'mobile' },
 ] as const;
 
 export const FOOTER_INFO: readonly FooterLink[] = [
-  { href: '#contacto', label: 'Contáctanos', icon: 'mail' },
-  { href: '#faq', label: 'FAQ', icon: 'faq' },
+  { href: '/contacto', label: 'Contáctanos', icon: 'mail' },
+  { href: '/contacto#faq', label: 'FAQ', icon: 'faq' },
   { href: '#', label: 'Política de Privacidad', icon: 'shield' },
   { href: '#', label: 'Términos y Condiciones', icon: 'document' },
 ] as const;

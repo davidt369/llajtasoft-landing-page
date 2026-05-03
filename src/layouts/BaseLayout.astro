@@ -1,0 +1,38 @@
+---
+import BaseHead from '../shared/components/layout/BaseHead.astro';
+import Header from '../shared/components/layout/Header.astro';
+import Footer from '../shared/components/layout/Footer.astro';
+import { SITE } from '../shared/constants/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  noIndex?: boolean;
+  showHeader?: boolean;
+  showFooter?: boolean;
+}
+
+const {
+  title = SITE.TITLE,
+  description = SITE.DESCRIPTION,
+  image,
+  noIndex = false,
+  showHeader = true,
+  showFooter = true,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <BaseHead title={title} description={description} image={image} noIndex={noIndex} />
+  </head>
+  <body class="bg-surface-950 text-surface-50 antialiased">
+    {showHeader && <Header />}
+    <main>
+      <slot />
+    </main>
+    {showFooter && <Footer />}
+  </body>
+</html>

@@ -1,4 +1,4 @@
-export type SocialLink = {
+﻿export type SocialLink = {
   key: 'mastodon' | 'twitter' | 'github';
   href: string;
   label: string;
@@ -7,17 +7,17 @@ export type SocialLink = {
 export const SOCIAL_LINKS: readonly SocialLink[] = [
   {
     key: 'mastodon',
-    href: 'https://m.webtoo.ls/@astro',
-    label: 'Síguenos en Mastodon',
+    href: '/contacto',
+    label: 'Contáctanos',
   },
   {
     key: 'twitter',
-    href: 'https://twitter.com/astrodotbuild',
-    label: 'Síguenos en Twitter',
+    href: 'https://wa.me/59170000000',
+    label: 'Escríbenos por WhatsApp',
   },
   {
     key: 'github',
-    href: 'https://github.com/withastro/astro',
-    label: 'Visita nuestro repositorio en GitHub',
+    href: 'mailto:contacto@llajtasoft.com',
+    label: 'Envíanos un correo',
   },
 ] as const;

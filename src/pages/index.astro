@@ -1,34 +1,29 @@
 ---
-import BaseHead from "../shared/components/layout/BaseHead.astro";
-import Footer from "../shared/components/layout/Footer.astro";
+import MainLayout from "../layouts/MainLayout.astro";
 import { SITE } from "../shared/constants/site";
-import HeroSection from "../features/home/components/HeroSection.astro";
+// import HeroSection from "../features/home/components/HeroSection.astro";
+import PainsSection from "../features/home/components/PainsSection.astro";
 import BenefitsSection from "../features/home/components/BenefitsSection.astro";
 import ServicesSection from "../features/home/components/ServicesSection.astro";
 import ProjectsSection from "../features/home/components/ProjectsSection.astro";
 import WhyUsSection from "../features/home/components/WhyUsSection.astro";
 import TestimonialsSection from "../features/home/components/TestimonialsSection.astro";
 import CtaSection from "../features/home/components/CtaSection.astro";
+import HeroNitro from "../features/home/components/HeroNitro.astro";
 ---
 
-<!doctype html>
-<html lang="es">
-  <head>
-    <BaseHead title={SITE.TITLE} description={SITE.DESCRIPTION} />
-  </head>
+<MainLayout title={SITE.TITLE} description={SITE.DESCRIPTION} withHeader={true}>
+  <HeroNitro />
+  <PainsSection />
+  <BenefitsSection />
+  <ServicesSection />
+  <ProjectsSection />
+  <WhyUsSection />
+  <TestimonialsSection />
+  <CtaSection />
 
-  <body>
-    <HeroSection />
-    <BenefitsSection />
-    <ServicesSection />
-    <ProjectsSection />
-    <WhyUsSection />
-    <TestimonialsSection />
-    <CtaSection />
-    <Footer />
-    <script>
-      import { initializeAnimation } from "../scripts/animate.js";
-      initializeAnimation();
-    </script>
-  </body>
-</html>
+  <script>
+    import { initializeAnimation } from "../scripts/animate.js";
+    initializeAnimation();
+  </script>
+</MainLayout>

@@ -2,8 +2,8 @@
 dist/
 # generated types
 .astro/
-.agents/
-.windsurf/
+# .agents/
+# .windsurf/
 # dependencies
 node_modules/
 

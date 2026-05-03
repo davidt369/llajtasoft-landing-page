@@ -1,0 +1,23 @@
+---
+import { ABOUT_HERO } from '../constants/labels';
+---
+
+<section class="section-hero">
+  <div class="section-pattern"><div class="section-pattern-grid"></div></div>
+
+  <div class="section-container">
+    <div class="section-header">
+      <span class="eyebrow">{ABOUT_HERO.BADGE}</span>
+      <h2 class="section-title">{ABOUT_HERO.TITLE}</h2>
+      <div class="accent-divider"></div>
+    </div>
+
+    <div class="brand-card brand-card-hover p-8">
+      {ABOUT_HERO.PARAGRAPHS.map((paragraph) => (
+        <p class="text-surface-200 leading-relaxed mb-6 text-lg last:mb-0">
+          {paragraph}
+        </p>
+      ))}
+    </div>
+  </div>
+</section>

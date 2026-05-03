@@ -1,0 +1,52 @@
+---
+import { SERVICIOS_CTA } from '../constants/labels';
+---
+
+<section class="py-20 px-4 bg-gray-900 text-white relative overflow-hidden">
+  <div class="absolute inset-0">
+    <div class="absolute inset-0 bg-gradient-to-b from-gray-900 to-gray-800 opacity-90"></div>
+    <div class="absolute inset-0 bg-[url('/images/tech-grid.svg')] opacity-5 animate-pulse"></div>
+  </div>
+
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="text-center">
+      <h2 class="text-3xl font-semibold mb-6">
+        {SERVICIOS_CTA.TITLE_PREFIX}
+        <span class="bg-gradient-to-r from-blue-500 to-blue-300 text-transparent bg-clip-text font-extrabold">
+          {SERVICIOS_CTA.TITLE_HIGHLIGHT}
+        </span>?
+      </h2>
+
+      <div class="mb-10 max-w-3xl mx-auto">
+        <p class="text-lg mb-8 text-zinc-300">
+          {SERVICIOS_CTA.SUBTITLE}
+        </p>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+        <a
+          href={SERVICIOS_CTA.CTA_HREF}
+          class="group bg-blue-500 text-white py-3 px-8 rounded-full hover:shadow-lg hover:shadow-blue-950 transform hover:-translate-y-1 transition-all duration-300 font-semibold"
+        >
+          <span class="flex items-center">
+            {SERVICIOS_CTA.CTA_BUTTON}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 ml-2 transform group-hover:translate-x-1 transition-transform"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              ></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

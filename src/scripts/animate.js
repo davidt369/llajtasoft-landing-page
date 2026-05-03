@@ -122,9 +122,13 @@ export function initializeAnimation() {
     function resize() {
       width = window.innerWidth;
       height = window.innerHeight;
-      largeHeader.style.height = height + "px";
-      canvas.width = width;
-      canvas.height = height;
+      if (largeHeader) {
+        largeHeader.style.height = height + "px";
+      }
+      if (canvas) {
+        canvas.width = width;
+        canvas.height = height;
+      }
     }
 
     // animation
@@ -162,14 +166,43 @@ export function initializeAnimation() {
     }
 
     function shiftPoint(p) {
-      TweenLite.to(p, 1 + 1 * Math.random(), {
-        x: p.originX - 50 + Math.random() * 100,
-        y: p.originY - 50 + Math.random() * 100,
-        ease: Circ.easeInOut,
-        onComplete: function () {
+      var duration = 1000 + Math.random() * 1000;
+      var nextX = p.originX - 50 + Math.random() * 100;
+      var nextY = p.originY - 50 + Math.random() * 100;
+
+      if (typeof TweenLite !== "undefined" && typeof Circ !== "undefined") {
+        TweenLite.to(p, duration / 1000, {
+          x: nextX,
+          y: nextY,
+          ease: Circ.easeInOut,
+          onComplete: function () {
+            shiftPoint(p);
+          },
+        });
+        return;
+      }
+
+      var startX = p.x;
+      var startY = p.y;
+      var startTime = performance.now();
+
+      function step(now) {
+        var progress = Math.min((now - startTime) / duration, 1);
+        var eased = progress < 0.5
+          ? 2 * progress * progress
+          : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+
+        p.x = startX + (nextX - startX) * eased;
+        p.y = startY + (nextY - startY) * eased;
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
           shiftPoint(p);
-        },
-      });
+        }
+      }
+
+      requestAnimationFrame(step);
     }
 
     // Canvas manipulation

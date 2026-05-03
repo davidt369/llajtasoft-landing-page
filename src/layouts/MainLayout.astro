@@ -1,0 +1,41 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import BaseHead from '../shared/components/layout/BaseHead.astro';
+import Header from '../shared/components/layout/Header.astro';
+import Footer from '../shared/components/layout/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  noIndex?: boolean;
+  withHeader?: boolean;
+  withFooter?: boolean;
+  bodyClass?: string;
+}
+
+const {
+  title,
+  description,
+  image,
+  noIndex = false,
+  withHeader = true,
+  withFooter = true,
+  bodyClass = 'bg-surface-950 text-surface-50 antialiased',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <BaseHead title={title} description={description} image={image} noIndex={noIndex} />
+    <ClientRouter/>
+  </head>
+  <body class={bodyClass}>
+    {withHeader && <Header />}
+    <main>
+      <slot />
+    </main>
+    {withFooter && <Footer />}
+  </body>
+</html>

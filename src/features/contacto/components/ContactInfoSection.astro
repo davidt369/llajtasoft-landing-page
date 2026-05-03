@@ -1,0 +1,62 @@
+---
+import { CONTACT_INFO } from '../constants/labels';
+
+const iconPaths: Record<string, string> = {
+  blue: 'M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z',
+  purple: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+  teal: 'M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z',
+};
+
+const iconPaths2: Record<string, string | null> = {
+  blue: null,
+  purple: null,
+  teal: 'M15 11a3 3 0 11-6 0 3 3 0 016 0z',
+};
+---
+
+<section class="py-20 px-4 bg-gradient-to-b from-gray-950 via-gray-900 to-gray-800 relative overflow-hidden">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute inset-0 bg-[radial-gradient(#ffffff33_1px,transparent_1px)] bg-[size:20px_20px]"></div>
+  </div>
+  
+  <div class="max-w-6xl mx-auto">
+    <!-- Section header -->
+    <div class="text-center mb-16 relative">
+      <span class="inline-block px-3 py-1 text-xs font-medium tracking-wider text-white uppercase bg-blue-400/10 rounded-full mb-4">{CONTACT_INFO.BADGE}</span>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-white">{CONTACT_INFO.TITLE}</h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-6"></div>
+      <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+        {CONTACT_INFO.SUBTITLE}
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+      {CONTACT_INFO.ITEMS.map((item) => (
+        <div class={`group bg-gray-900/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl transition-all duration-300 hover:shadow-${item.accentColor}-500/20 border border-gray-800 hover:border-${item.accentColor}-500/30 p-8 text-center`}>
+          <div class={`w-16 h-16 mx-auto bg-${item.accentColor}-500/20 rounded-full flex items-center justify-center mb-6`}>
+            <svg xmlns="http://www.w3.org/2000/svg" class={`h-8 w-8 text-${item.accentColor}-400`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths[item.accentColor]} />
+              {iconPaths2[item.accentColor] && (
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={iconPaths2[item.accentColor]!} />
+              )}
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-white mb-4">{item.title}</h3>
+          <p class="text-gray-300 mb-4">
+            {item.description}
+          </p>
+          {item.href ? (
+            <a href={item.href} class={`text-${item.accentColor}-400 font-semibold hover:text-${item.accentColor}-300 transition-colors duration-300`}>
+              {item.value}
+            </a>
+          ) : (
+            <p class={`text-${item.accentColor}-400 font-semibold`}>
+              {item.value}
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

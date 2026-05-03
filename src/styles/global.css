@@ -1,353 +1,323 @@
 @import "tailwindcss";
 
 @theme {
-  --color-celso-50: oklch(0.97 0.005 250);
-  --color-celso-100: oklch(0.94 0.01 250);
-  --color-celso-200: oklch(0.85 0.02 250);
-  --color-celso-300: oklch(0.72 0.03 250);
-  --color-celso-400: oklch(0.55 0.04 250);
-  --color-celso-500: oklch(0.42 0.045 250);
-  --color-celso-600: oklch(0.32 0.04 250);
-  --color-celso-700: oklch(0.24 0.035 250);
-  --color-celso-800: oklch(0.16 0.03 250);
-  --color-celso-900: oklch(0.1 0.025 250);
-  --color-celso-950: oklch(0.262 0.051 172.552);
+  --color-brand-50: #eef6ff;
+  --color-brand-100: #d9ebff;
+  --color-brand-200: #b9dcff;
+  --color-brand-300: #88c6ff;
+  --color-brand-400: #50a6ff;
+  --color-brand-500: #2684ff;
+  --color-brand-600: #0f63e4;
+  --color-brand-700: #0b4fb8;
+  --color-brand-800: #0f438f;
+  --color-brand-900: #123a74;
+  --color-brand-950: #071a33;
+
+  --color-accent-50: #eefbff;
+  --color-accent-100: #d7f6ff;
+  --color-accent-200: #b8efff;
+  --color-accent-300: #82e2ff;
+  --color-accent-400: #44cef6;
+  --color-accent-500: #18b3dc;
+  --color-accent-600: #0d8fb8;
+  --color-accent-700: #107293;
+  --color-accent-800: #155d78;
+  --color-accent-900: #174d65;
+  --color-accent-950: #082f3f;
+
+  --color-surface-50: #f8fafc;
+  --color-surface-100: #e2e8f0;
+  --color-surface-200: #cbd5e1;
+  --color-surface-300: #94a3b8;
+  --color-surface-400: #64748b;
+  --color-surface-500: #475569;
+  --color-surface-600: #334155;
+  --color-surface-700: #1e293b;
+  --color-surface-800: #0f172a;
+  --color-surface-900: #07111f;
+  --color-surface-950: #020617;
+
+  --color-success-500: #22c55e;
+  --color-warning-500: #f59e0b;
+  --color-danger-500: #ef4444;
 }
 
-/* Estilos para Markdown */
+:root {
+  color-scheme: dark;
+  --bg-page: #020617;
+  --bg-section: #07111f;
+  --bg-card: rgba(15, 23, 42, 0.82);
+  --bg-card-strong: rgba(7, 17, 31, 0.92);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --border-soft: rgba(148, 163, 184, 0.18);
+  --border-brand: rgba(38, 132, 255, 0.32);
+  --brand-glow: rgba(38, 132, 255, 0.22);
+  --accent-glow: rgba(24, 179, 220, 0.18);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 15px;
+}
+
+@media (min-width: 1280px) {
+  html { font-size: 15.5px; }
+}
+
+body {
+  @apply antialiased text-[0.95rem] leading-relaxed;
+  background:
+    radial-gradient(circle at top left, var(--brand-glow), transparent 32rem),
+    radial-gradient(circle at bottom right, var(--accent-glow), transparent 30rem),
+    linear-gradient(180deg, var(--bg-page) 0%, var(--bg-section) 100%);
+  color: var(--text-primary);
+  font-family: "Atkinson", system-ui, sans-serif;
+}
+
+a {
+  transition: color 180ms ease, opacity 180ms ease, transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+::selection {
+  background: rgba(38, 132, 255, 0.38);
+  color: white;
+}
+
+@layer components {
+  .section-hero {
+    @apply py-20 px-4 relative overflow-hidden bg-gradient-to-b from-surface-950 via-surface-900 to-surface-800;
+  }
+
+  .section-panel {
+    @apply py-20 px-4 relative overflow-hidden bg-surface-900;
+  }
+
+  .section-panel-alt {
+    @apply py-20 px-4 relative overflow-hidden bg-surface-950;
+  }
+
+  .section-pattern {
+    @apply absolute inset-0 opacity-10;
+  }
+
+  .section-pattern-grid {
+    @apply absolute inset-0 bg-[radial-gradient(rgba(148,163,184,0.24)_1px,transparent_1px)] bg-[size:20px_20px];
+  }
+
+  .section-container {
+    @apply max-w-6xl mx-auto relative z-10;
+  }
+
+  .section-header {
+    @apply text-center mb-16 relative;
+  }
+
+  .eyebrow {
+    @apply inline-block px-3 py-1 text-xs font-medium tracking-wider text-brand-100 uppercase bg-brand-500/10 border border-brand-400/15 rounded-full mb-4;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold mb-4 text-white tracking-tight;
+  }
+
+  .section-copy {
+    @apply text-surface-200 max-w-3xl mx-auto text-base;
+  }
+
+  .accent-divider {
+    @apply w-24 h-1 bg-gradient-to-r from-brand-500 to-accent-400 mx-auto mb-6 rounded-full;
+  }
+
+  .brand-card {
+    @apply bg-surface-900/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-surface-700/80 transition-all duration-300;
+  }
+
+  .brand-card-hover {
+    @apply hover:border-brand-500/40 hover:shadow-brand-950/40;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-brand-600 px-8 py-3 text-base font-semibold text-white shadow-lg shadow-brand-950/30 transition-all hover:bg-brand-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-surface-600 bg-white/10 px-8 py-3 text-base font-semibold text-white transition-all hover:bg-white/15 hover:border-brand-400/40;
+  }
+
+  .form-field {
+    @apply bg-surface-800/70 border border-surface-600 focus:border-brand-400 text-white p-4 rounded-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-500/40;
+  }
+
+  .icon-soft {
+    @apply text-brand-300 bg-brand-500/15;
+  }
+}
+
 .prose {
-  @apply text-gray-300 max-w-none;
-  
-  /* Encabezados */
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-bold text-white mt-8 mb-4;
-  }
-  
-  h1 {
-    @apply text-3xl md:text-4xl border-b border-gray-800 pb-2;
-    background: linear-gradient(90deg, #3b82f6, #60a5fa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  h2 {
-    @apply text-2xl md:text-3xl border-b border-gray-800 pb-2;
-    background: linear-gradient(90deg, #3b82f6, #60a5fa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  h3 {
-    @apply text-xl md:text-2xl text-blue-400;
-  }
-  
-  h4 {
-    @apply text-lg md:text-xl text-blue-300;
-  }
-  
-  h5 {
-    @apply text-base md:text-lg text-blue-300;
-  }
-  
-  h6 {
-    @apply text-sm md:text-base text-blue-300;
-  }
-  
-  /* Párrafos */
-  p {
-    @apply my-4 leading-relaxed text-gray-300;
-  }
-  
-  /* Enlaces */
-  a {
-    @apply text-blue-400 hover:text-blue-300 transition-colors duration-200 underline underline-offset-2;
-  }
-  
-  /* Listas */
-  ul, ol {
-    @apply my-4 pl-6;
-  }
-  
-  ul {
-    @apply list-disc;
-  }
-  
-  ol {
-    @apply list-decimal;
-  }
-  
-  li {
-    @apply mb-2;
-  }
-  
-  li > ul, li > ol {
-    @apply my-2;
-  }
-  
-  /* Bloques de código */
-  pre {
-    @apply my-6 p-4 rounded-xl bg-gray-800/50 border border-gray-700 overflow-x-auto;
-  }
-  
-  code {
-    @apply font-mono text-sm;
-  }
-  
-  /* Código en línea */
-  :not(pre) > code {
-    @apply px-1.5 py-0.5 rounded bg-gray-800/50 border border-gray-700 text-blue-300 font-mono text-sm;
-  }
-  
-  /* Citas */
-  blockquote {
-    @apply my-6 pl-4 border-l-4 border-blue-500 bg-gray-800/30 py-2 px-4 rounded-r-lg italic;
-  }
-  
-  blockquote p {
-    @apply text-gray-300;
-  }
-  
-  /* Imágenes */
-  img {
-    @apply my-6 rounded-xl max-w-full h-auto mx-auto shadow-lg border border-gray-800 transition-all duration-300 hover:shadow-blue-500/20;
-  }
-  
-  /* Tablas */
-  table {
-    @apply w-full my-6 border-collapse overflow-hidden rounded-xl border border-gray-800;
-  }
-  
-  thead {
-    @apply bg-gray-800/70;
-  }
-  
-  th {
-    @apply px-4 py-3 text-left font-semibold text-blue-300 border-b border-gray-700;
-  }
-  
-  td {
-    @apply px-4 py-3 border-b border-gray-800;
-  }
-  
-  tr:last-child td {
-    @apply border-b-0;
-  }
-  
-  tr:hover {
-    @apply bg-gray-800/30;
-  }
-  
-  /* Línea horizontal */
-  hr {
-    @apply my-8 border-t border-gray-800;
-  }
-  
-  /* Texto formateado */
-  strong {
-    @apply font-bold text-white;
-  }
-  
-  em {
-    @apply italic text-gray-300;
-  }
-  
-  del {
-    @apply line-through text-gray-500;
-  }
-  
-  /* Destacados */
-  mark {
-    @apply bg-blue-500/20 text-blue-300 px-1 rounded;
-  }
-  
-  /* Superíndice y subíndice */
-  sup {
-    @apply text-xs align-super;
-  }
-  
-  sub {
-    @apply text-xs align-sub;
-  }
-  
-  /* Definiciones */
-  dl {
-    @apply my-4;
-  }
-  
-  dt {
-    @apply font-bold text-blue-300;
-  }
-  
-  dd {
-    @apply ml-4 mb-4;
-  }
-  
-  /* Teclado */
-  kbd {
-    @apply px-2 py-1 text-xs font-semibold text-gray-900 bg-gray-300 rounded shadow;
-  }
-  
-  /* Abreviaturas */
-  abbr {
-    @apply cursor-help border-b border-dotted border-gray-500;
-  }
-  
-  /* Detalles y resumen */
-  details {
-    @apply my-4 rounded-xl border border-gray-800 overflow-hidden;
-  }
-  
-  summary {
-    @apply p-4 bg-gray-800/50 cursor-pointer font-medium text-blue-300 hover:bg-gray-800/70 transition-colors duration-200;
-  }
-  
-  details[open] summary {
-    @apply border-b border-gray-800;
-  }
-  
-  details > *:not(summary) {
-    @apply p-4;
-  }
-  
-  /* Notas al pie */
-  .footnotes {
-    @apply mt-12 pt-8 border-t border-gray-800;
-  }
-  
-  .footnotes ol {
-    @apply text-sm text-gray-400;
-  }
-  
-  .footnote-ref {
-    @apply text-xs align-super text-blue-400 no-underline;
-  }
-  
-  .footnote-backref {
-    @apply text-blue-400 no-underline;
-  }
-  
-  /* Sintaxis resaltada para código */
-  .token.comment,
-  .token.prolog,
-  .token.doctype,
-  .token.cdata {
-    @apply text-gray-500;
-  }
-
-  .token.punctuation {
-    @apply text-gray-400;
-  }
-
-  .token.namespace {
-    @apply opacity-70;
-  }
-
-  .token.property,
-  .token.tag,
-  .token.boolean,
-  .token.number,
-  .token.constant,
-  .token.symbol,
-  .token.deleted {
-    @apply text-red-400;
-  }
-
-  .token.selector,
-  .token.attr-name,
-  .token.string,
-  .token.char,
-  .token.builtin,
-  .token.inserted {
-    @apply text-green-400;
-  }
-
-  .token.operator,
-  .token.entity,
-  .token.url,
-  .language-css .token.string,
-  .style .token.string {
-    @apply text-yellow-300;
-  }
-
-  .token.atrule,
-  .token.attr-value,
-  .token.keyword {
-    @apply text-blue-400;
-  }
-
-  .token.function,
-  .token.class-name {
-    @apply text-purple-400;
-  }
-
-  .token.regex,
-  .token.important,
-  .token.variable {
-    @apply text-orange-400;
-  }
-
-  .token.important,
-  .token.bold {
-    @apply font-bold;
-  }
-  
-  .token.italic {
-    @apply italic;
-  }
-
-  .token.entity {
-    @apply cursor-help;
-  }
-  
-  /* Ajustes para dispositivos móviles */
-  @media (max-width: 640px) {
-    pre {
-      @apply text-sm;
-    }
-    
-    table {
-      @apply block overflow-x-auto;
-    }
-  }
+  @apply text-surface-200 max-w-none;
 }
 
-/* Ajustes para modo oscuro (ya estamos en modo oscuro por defecto) */
-.dark .prose {
-  /* Si necesitas ajustes específicos para modo oscuro */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply font-bold text-white mt-8 mb-4;
 }
 
-/* Estilos para imágenes con leyenda */
+.prose h1,
+.prose h2 {
+  @apply border-b border-surface-700 pb-2;
+  background: linear-gradient(90deg, #2684ff, #44cef6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.prose h1 {
+  @apply text-2xl md:text-3xl;
+}
+
+.prose h2 {
+  @apply text-xl md:text-2xl;
+}
+
+.prose h3 {
+  @apply text-lg md:text-xl text-brand-300;
+}
+
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply text-brand-200;
+}
+
+.prose p {
+  @apply my-4 leading-relaxed text-surface-200 text-[0.95rem];
+}
+
+.prose a {
+  @apply text-brand-300 hover:text-accent-300 transition-colors duration-200 underline underline-offset-2;
+}
+
+.prose ul,
+.prose ol {
+  @apply my-4 pl-6;
+}
+
+.prose ul {
+  @apply list-disc;
+}
+
+.prose ol {
+  @apply list-decimal;
+}
+
+.prose li {
+  @apply mb-2;
+}
+
+.prose pre {
+  @apply my-6 p-4 rounded-xl bg-surface-800/70 border border-surface-700 overflow-x-auto;
+}
+
+.prose code {
+  @apply font-mono text-sm;
+}
+
+.prose :not(pre) > code {
+  @apply px-1.5 py-0.5 rounded bg-surface-800/70 border border-surface-700 text-brand-200 font-mono text-sm;
+}
+
+.prose blockquote {
+  @apply my-6 pl-4 border-l-4 border-brand-500 bg-brand-500/10 py-2 px-4 rounded-r-lg italic;
+}
+
+.prose img {
+  @apply my-6 rounded-xl max-w-full h-auto mx-auto shadow-lg border border-surface-700 transition-all duration-300 hover:shadow-brand-500/20;
+}
+
+.prose table {
+  @apply w-full my-6 border-collapse overflow-hidden rounded-xl border border-surface-700;
+}
+
+.prose thead,
+.prose tr:hover {
+  @apply bg-surface-800/70;
+}
+
+.prose th {
+  @apply px-4 py-3 text-left font-semibold text-brand-200 border-b border-surface-700;
+}
+
+.prose td {
+  @apply px-4 py-3 border-b border-surface-700;
+}
+
+.prose tr:last-child td {
+  @apply border-b-0;
+}
+
+.prose hr {
+  @apply my-8 border-t border-surface-700;
+}
+
+.prose strong {
+  @apply font-bold text-white;
+}
+
+.prose mark {
+  @apply bg-brand-500/20 text-brand-200 px-1 rounded;
+}
+
 figure {
   @apply my-8 mx-auto;
 }
 
 figcaption {
-  @apply text-center text-sm text-gray-400 mt-2 italic;
+  @apply text-center text-sm text-surface-400 mt-2 italic;
 }
 
-/* Estilos para contenido generado por IA */
+.ai-generated,
+.note,
+.warning,
+.danger {
+  @apply border-l-4 pl-4 py-2 my-6 rounded-r-lg;
+}
+
 .ai-generated {
-  @apply border-l-4 border-purple-500 bg-purple-500/10 pl-4 py-2 my-6 rounded-r-lg;
+  @apply border-accent-500 bg-accent-500/10;
 }
 
-/* Estilos para notas y advertencias */
 .note {
-  @apply border-l-4 border-blue-500 bg-blue-500/10 pl-4 py-2 my-6 rounded-r-lg;
+  @apply border-brand-500 bg-brand-500/10;
 }
 
 .warning {
-  @apply border-l-4 border-yellow-500 bg-yellow-500/10 pl-4 py-2 my-6 rounded-r-lg;
+  @apply border-warning-500 bg-warning-500/10;
 }
 
 .danger {
-  @apply border-l-4 border-red-500 bg-red-500/10 pl-4 py-2 my-6 rounded-r-lg;
+  @apply border-danger-500 bg-danger-500/10;
 }
 
-/* Estilos para tarjetas de información */
 .info-card {
-  @apply bg-gray-800/80 backdrop-blur-sm rounded-xl overflow-hidden shadow-xl border border-gray-700 p-6 my-8;
+  @apply bg-surface-900/80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-xl border border-surface-700/80 p-6 my-8;
 }
 
 .info-card-title {
-  @apply text-xl font-bold text-blue-400 mb-4;
+  @apply text-xl font-bold text-brand-300 mb-4;
+}
+
+@media (max-width: 640px) {
+  .prose pre {
+    @apply text-sm;
+  }
+
+  .prose table {
+    @apply block overflow-x-auto;
+  }
 }
