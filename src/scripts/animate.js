@@ -140,7 +140,7 @@ export function initializeAnimation() {
     }
 
     function animate() {
-      if (animateHeader) {
+      if (animateHeader && ctx) {
         ctx.clearRect(0, 0, width, height);
         for (var i in points) {
           // detect points in range

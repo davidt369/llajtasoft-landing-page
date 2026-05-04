@@ -1,7 +1,8 @@
 import { Composition } from "remotion";
-import { ProductPresentation } from "./ProductPresentation";
+import type { FC } from "react";
+import ProductPresentation from "./ProductPresentation";
 
-export const RemotionRoot: React.FC = () => {
+export const RemotionRoot: FC = () => {
   return (
     <>
       <Composition
